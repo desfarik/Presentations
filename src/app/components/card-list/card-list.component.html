@@ -14,10 +14,12 @@
 <ng-template #itemTemplate let-item let-readonly="readonly">
   <div class="card-item">
     <div *ngIf="!readonly" class="actions">
-      <button mat-icon-button color="primary">
+      <button mat-icon-button color="primary"
+              (click)="editTask.emit(item)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="primary">
+      <button mat-icon-button color="primary"
+              (click)="deleteTask.emit(item)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>

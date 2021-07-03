@@ -1,0 +1,15 @@
+<mat-dialog-content>
+  <mat-form-field class="title-input" appearance="outline">
+    <mat-label>Название упражнения</mat-label>
+    <input matInput type="text" [(ngModel)]="title">
+    <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear"
+            (click)="title=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <editor [init]="config"></editor>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Сохранить</button>
+</mat-dialog-actions>
