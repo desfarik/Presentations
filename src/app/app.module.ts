@@ -11,13 +11,15 @@ import { MainComponent } from './pages/main/main.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import { TaskPanelComponent } from './components/task-panel/task-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewComponent,
     CreateComponent,
-    MainComponent
+    MainComponent,
+    TaskPanelComponent
   ],
   imports: [
     BrowserModule,
