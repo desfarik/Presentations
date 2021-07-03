@@ -12,6 +12,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { TaskPanelComponent } from './components/task-panel/task-panel.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { CardListComponent } from './components/card-list/card-list.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { TaskPanelComponent } from './components/task-panel/task-panel.component
     ViewComponent,
     CreateComponent,
     MainComponent,
-    TaskPanelComponent
+    TaskPanelComponent,
+    CardListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { TaskPanelComponent } from './components/task-panel/task-panel.component
     EditorModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    DragDropModule
   ],
   providers: [
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }

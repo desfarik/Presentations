@@ -1,4 +1,9 @@
+mat-toolbar {
+ position: absolute;
+}
 .content {
-  flex-grow: 1;
   display: flex;
+  overflow: hidden;
+  height: 100%;
+  padding-top: 64px;
 }

@@ -1,9 +1,24 @@
 <div class="panel-container">
-  <div class="header">
-    <span>Задания</span>
-  </div>
   <mat-tab-group>
-    <mat-tab label="Урок">Content 1</mat-tab>
-    <mat-tab label="Домашка">Content 2</mat-tab>
+    <mat-tab label="Урок">
+      <ng-container *ngTemplateOutlet="create; context:{$implicit:types.SCHOOL}"></ng-container>
+      <app-card-list [items]="lessonItems"
+                     [readonly]="false">
+      </app-card-list>
+    </mat-tab>
+    <mat-tab label="Домашка">
+      <ng-container *ngTemplateOutlet="create; context:{$implicit:types.HOME}"></ng-container>
+      <app-card-list [items]="homeLessons"></app-card-list>
+    </mat-tab>
   </mat-tab-group>
 </div>
+
+<ng-template #create let-type>
+  <div class="add-new-task-container">
+    <button mat-button color="primary"
+            (click)="createNewTask(type)">
+      <mat-icon>add</mat-icon>
+      Создать
+    </button>
+  </div>
+</ng-template>

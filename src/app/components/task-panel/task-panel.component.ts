@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CardItem, CardItemType} from "../card-list/card-item";
 
 @Component({
   selector: 'app-task-panel',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskPanelComponent implements OnInit {
 
-  constructor() { }
+  types = CardItemType;
+
+  lessonItems: CardItem[] = [
+    {title: "Задание1", image: '', type: CardItemType.SCHOOL},
+    {title: "Задание2", image: '', type: CardItemType.SCHOOL},
+    {title: "Задание3", image: '', type: CardItemType.SCHOOL},
+    {title: "Задание4", image: '', type: CardItemType.SCHOOL}]
+
+  homeLessons: CardItem[] = [
+    {title: "Задание1", image: '', type: CardItemType.HOME},
+    {title: "Задание2", image: '', type: CardItemType.HOME}]
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  createNewTask(type: CardItemType): void {
+    console.log(type);
   }
 
 }

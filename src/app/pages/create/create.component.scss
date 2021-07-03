@@ -1,14 +1,16 @@
 :host {
   flex-grow: 1;
   display: flex;
+  overflow-x: auto;
 }
 
 .editor {
   flex-grow: 1;
   height: 100%;
-  min-width: 650px;
+  min-width: 665px;
 }
 
 .row-container {
   display: flex;
+  width: 100%
 }

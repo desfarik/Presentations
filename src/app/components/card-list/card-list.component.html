@@ -1,0 +1,32 @@
+<ng-container *ngIf="readonly">
+  <ng-container *ngFor="let item of items">
+    <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:true}"></ng-container>
+  </ng-container>
+</ng-container>
+<div *ngIf="!readonly" cdkDropList class="draggable-list"
+     (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let item of items" cdkDrag>
+    <div class="card-item-placeholder" *cdkDragPlaceholder></div>
+    <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:false}"></ng-container>
+  </div>
+</div>
+
+<ng-template #itemTemplate let-item let-readonly="readonly">
+  <div class="card-item">
+    <div *ngIf="!readonly" class="actions">
+      <button mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="image-container">
+      <img alt="Картинка" [src]="item.image">
+    </div>
+    <div class="title-container">
+      <mat-icon color="warn">{{item.type}}</mat-icon>
+      <span class="title">{{item.title}}</span>
+    </div>
+  </div>
+</ng-template>

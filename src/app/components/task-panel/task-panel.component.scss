@@ -1,0 +1,24 @@
+.panel-container {
+  height: 100%;
+
+  ::ng-deep {
+    .mat-tab-group {
+      height: 100%;
+    }
+
+    .mat-tab-header {
+      border-color: #ccc;
+    }
+
+    .mat-tab-label {
+      height: 39px;
+    }
+  }
+}
+
+.add-new-task-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  margin-bottom: -6px;
+}
