@@ -20,6 +20,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {AngularFireModule} from "@angular/fire";
+import {firebaseConfig} from "../../firebase.config";
+import {AngularFireAuthModule, USE_EMULATOR} from "@angular/fire/auth";
+import {FirebaseUIModule} from "firebaseui-angular";
+import {firebaseUiAuthConfig} from "../../login.config";
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import {FormsModule} from "@angular/forms";
     MainComponent,
     TaskPanelComponent,
     CardListComponent,
-    TaskEditorDialogComponent
+    TaskEditorDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +51,13 @@ import {FormsModule} from "@angular/forms";
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [
-    {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
+    {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'},
   ],
   bootstrap: [AppComponent]
 })
