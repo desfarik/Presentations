@@ -8,7 +8,6 @@ import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 import {ViewComponent} from './pages/view/view.component';
 import {CreateComponent} from './pages/create/create.component';
 import {MainComponent} from './pages/main/main.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {TaskPanelComponent} from './components/task-panel/task-panel.component';
@@ -22,10 +21,11 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {AngularFireModule} from "@angular/fire";
 import {firebaseConfig} from "../../firebase.config";
-import {AngularFireAuthModule, USE_EMULATOR} from "@angular/fire/auth";
+import {AngularFireAuthModule} from "@angular/fire/auth";
 import {FirebaseUIModule} from "firebaseui-angular";
 import {firebaseUiAuthConfig} from "../../login.config";
-import { LoginComponent } from './pages/login/login.component';
+import {LoginComponent} from './pages/login/login.component';
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import { LoginComponent } from './pages/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     EditorModule,
-    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
@@ -54,6 +53,7 @@ import { LoginComponent } from './pages/login/login.component';
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [

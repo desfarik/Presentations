@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CardItem} from "./card-item";
+import {CardItem, CardItemType} from "./card-item";
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import {Task} from "../../core/dto/task";
 
@@ -12,16 +12,14 @@ import {Task} from "../../core/dto/task";
 export class CardListComponent implements OnInit {
   @Input()
   items: CardItem[] = [];
-
   @Input()
   readonly = true
-
   @Output()
-  editTask = new EventEmitter<Task>()
-
+  editItem = new EventEmitter<Task>()
   @Output()
-  deleteTask = new EventEmitter<Task>()
+  deleteItem = new EventEmitter<Task>()
 
+  types = CardItemType;
 
   constructor() {
   }

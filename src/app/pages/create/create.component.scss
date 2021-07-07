@@ -14,3 +14,48 @@
   display: flex;
   width: 100%
 }
+
+.title-container {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 110;
+
+  .title-input {
+    input {
+      color: white;
+      font-size: 20px;
+      position: relative;
+      top: 3px;
+    }
+
+    ::ng-deep {
+      .mat-form-field-ripple, .mat-form-field-underline {
+        background: white;
+      }
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    color: white;
+  }
+
+  .toolbar-button {
+    color: white;
+    margin-left: 5px;
+  }
+
+  .save-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 8px;
+  }
+}
+

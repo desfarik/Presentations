@@ -1,5 +1,36 @@
+<div class="title-container">
+  <ng-container *ngIf="editTitleInProgress">
+    <mat-form-field class="title-input">
+      <input matInput type="text"
+             [(ngModel)]="title">
+    </mat-form-field>
+    <button *ngIf="title" mat-icon-button aria-label="done"
+            class="toolbar-button"
+            (click)="editTitleInProgress = false">
+      <mat-icon>done</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="!editTitleInProgress">
+    <div class="title">{{title}}</div>
+    <button class="toolbar-button" mat-icon-button aria-label="edit"
+            (click)="editTitleInProgress = true">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </ng-container>
+  <div class="save-container">
+    <button class="toolbar-button" mat-icon-button aria-label="edit"
+            (click)="save()">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</div>
+
 <div class="row-container">
   <editor class="editor"
           [init]="config"></editor>
-  <app-task-panel class="task-panel"></app-task-panel>
+  <app-task-panel class="task-panel"
+                  [lessonTasks]="presentation && presentation.lessonTasks"
+                  [homeTasks]="presentation && presentation.homeTasks"
+                  [presentationId]="presentation && presentation.id"></app-task-panel>
 </div>

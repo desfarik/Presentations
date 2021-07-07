@@ -6,6 +6,7 @@ import {ViewComponent} from "./pages/view/view.component";
 import {AuthGuard} from "./core/guard/auth.guard";
 import {LoginComponent} from "./pages/login/login.component";
 import {LoginGuard} from "./core/guard/login.guard";
+import {PresentationResolver} from "./core/resolver/presentation.resolver";
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
     path: 'create/:id',
     component: CreateComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit/:id',
+    component: CreateComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      presentation: PresentationResolver
+    }
   },
   {
     path: 'view/:id',

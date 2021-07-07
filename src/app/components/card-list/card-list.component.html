@@ -1,11 +1,15 @@
 <ng-container *ngIf="readonly">
-  <ng-container *ngFor="let item of items">
-    <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:true}"></ng-container>
-  </ng-container>
+  <div class="card-list">
+    <ng-content></ng-content>
+    <ng-container *ngFor="let item of items">
+      <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:true}"></ng-container>
+    </ng-container>
+  </div>
 </ng-container>
-<div *ngIf="!readonly" cdkDropList class="draggable-list"
+<div *ngIf="!readonly" cdkDropList class="card-list draggable-list"
      (cdkDropListDropped)="drop($event)">
-  <div *ngFor="let item of items" cdkDrag>
+  <ng-content></ng-content>
+  <div *ngFor="let item of items" cdkDrag class="card-item-drag">
     <div class="card-item-placeholder" *cdkDragPlaceholder></div>
     <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:false}"></ng-container>
   </div>
@@ -15,11 +19,11 @@
   <div class="card-item">
     <div *ngIf="!readonly" class="actions">
       <button mat-icon-button color="primary"
-              (click)="editTask.emit(item)">
+              (click)="editItem.emit(item)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="primary"
-              (click)="deleteTask.emit(item)">
+              (click)="deleteItem.emit(item)">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
@@ -27,7 +31,11 @@
       <img alt="Картинка" [src]="item.image">
     </div>
     <div class="title-container">
-      <mat-icon color="warn">{{item.type}}</mat-icon>
+      <mat-icon [class.school]="item.type === types.SCHOOL"
+                [class.home]="item.type === types.HOME"
+                [class.presentation]="item.type === types.PRESENTATION">
+        {{item.type}}
+      </mat-icon>
       <span class="title">{{item.title}}</span>
     </div>
   </div>

@@ -6,13 +6,15 @@ export class Task implements CardItem {
   public readonly title: string;
   public readonly htmlUrl: string;
   public readonly type: CardItemType;
+  public order: number
 
 
-  constructor(id: string, image: string, title: string, htmlUrl: string, type: CardItemType) {
+  constructor(id: string, image: string, title: string, htmlUrl: string, type: CardItemType, order: number) {
     this.id = id;
     this.image = image;
     this.title = title;
     this.htmlUrl = htmlUrl;
     this.type = type;
+    this.order = order;
   }
 }
