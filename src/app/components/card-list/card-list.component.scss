@@ -2,7 +2,7 @@
   position: relative;
   height: 150px;
   width: 270px;
-  margin: 16px;
+  margin: 16px auto;
   border: 1px solid #dadce0;
   border-radius: 8px;
   overflow: hidden;
@@ -15,6 +15,12 @@
     align-items: flex-end;
     justify-content: center;
     flex-grow: 1;
+
+    img {
+      width: 100%;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
   }
 
   .title-container {

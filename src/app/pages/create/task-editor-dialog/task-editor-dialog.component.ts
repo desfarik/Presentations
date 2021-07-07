@@ -36,10 +36,14 @@ export class TaskEditorDialogComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  get isDisabled(): boolean {
+    return !(this.title)
+  }
+
 
   close() {
     const html = this.editorComponent.editor.getContent({format: 'html'});
-    this.dialogRef.close({title: this.title, html})
+    this.dialogRef.close({title: this.title.trim(), html})
   }
 
   async ngAfterViewInit(): Promise<void> {

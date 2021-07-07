@@ -45,8 +45,8 @@ export class PresentationService {
 
   async save(id: string = this.generateId(), title: string, html: string,
              lessonItems: Task[] = [], homeLessons: Task[] = []): Promise<Presentation> {
-    const url = await this.storageService.savePresentationHtml(id, html);
-    const presentation = new Presentation(id, '', title, url, lessonItems, homeLessons, 1);
+    const [url, imageUrl] = await this.storageService.savePresentationHtml(id, html);
+    const presentation = new Presentation(id, imageUrl, title, url, lessonItems, homeLessons, 1);
     await this.upload(presentation);
     console.log('saved');
     return presentation;

@@ -29,7 +29,20 @@ export class CreateComponent implements OnInit, AfterViewInit {
   presentation!: Presentation;
 
   config = {
-    ...editorConfig
+    ...editorConfig,
+    content_style: `
+    body {
+        max-width: 663px;
+        background: white;
+        margin: 12px auto 0;
+        padding: 1px 16px;
+        min-height: calc(100% - 16px);
+        box-shadow: 0 1px 4px 0 rgb(0 0 0 / 37%);
+        }
+    html {
+        background: whitesmoke;
+        height: 100%;
+    }`
   }
 
   @ViewChild(EditorComponent)

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Удаление</h1>
+<mat-dialog-content>
+  <div class="name-container">Вы действительно хотите удалить {{data.type.slice(0, -1)}}y
+    <span class="error">{{data.name.trim()}}</span> ?
+  </div>
+  <mat-form-field class="name-input" appearance="outline">
+    <mat-label>Введите имя {{data.type.slice(0, -1)}}и для подтверждения</mat-label>
+    <input matInput type="text" [(ngModel)]="enteredName">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close cdkFocusInitial>Отмена</button>
+  <button mat-button color="primary"
+          [disabled]="enteredName.trim()!==data.name.trim()"
+          [mat-dialog-close]="true">Удалить
+  </button>
+</mat-dialog-actions>

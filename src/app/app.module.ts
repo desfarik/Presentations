@@ -26,6 +26,7 @@ import {FirebaseUIModule} from "firebaseui-angular";
 import {firebaseUiAuthConfig} from "../../login.config";
 import {LoginComponent} from './pages/login/login.component';
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     TaskPanelComponent,
     CardListComponent,
     TaskEditorDialogComponent,
-    LoginComponent
+    LoginComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
