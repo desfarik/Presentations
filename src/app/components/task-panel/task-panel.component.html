@@ -12,7 +12,9 @@
       <ng-container *ngTemplateOutlet="create; context:{$implicit:types.HOME}"></ng-container>
       <app-card-list [items]="homeTasks"
                      (editItem)="editTask($event)"
-                     (deleteItem)="deleteTask($event)"></app-card-list>
+                     (deleteItem)="deleteTask($event)"
+                     [readonly]="false">
+      </app-card-list>
     </mat-tab>
   </mat-tab-group>
 </div>

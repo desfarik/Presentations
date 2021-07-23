@@ -1,7 +1,7 @@
 <ng-container *ngIf="readonly">
   <div class="card-list">
     <ng-content></ng-content>
-    <ng-container *ngFor="let item of items">
+    <ng-container *ngFor="let item of orderedItems">
       <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:true}"></ng-container>
     </ng-container>
   </div>
@@ -9,7 +9,7 @@
 <div *ngIf="!readonly" cdkDropList class="card-list draggable-list"
      (cdkDropListDropped)="drop($event)">
   <ng-content></ng-content>
-  <div *ngFor="let item of items" cdkDrag class="card-item-drag">
+  <div *ngFor="let item of orderedItems" cdkDrag class="card-item-drag">
     <div class="card-item-placeholder" *cdkDragPlaceholder></div>
     <ng-container *ngTemplateOutlet="itemTemplate; context:{$implicit:item, readonly:false}"></ng-container>
   </div>
@@ -18,11 +18,15 @@
 <ng-template #itemTemplate let-item let-readonly="readonly">
   <div class="card-item">
     <div *ngIf="!readonly" class="actions">
+      <button mat-icon-button class="view-button"
+              (click)="viewItem.emit(item)">
+        <mat-icon>visibility</mat-icon>
+      </button>
       <button mat-icon-button color="primary"
               (click)="editItem.emit(item)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="primary"
+      <button mat-icon-button color="error"
               (click)="deleteItem.emit(item)">
         <mat-icon>delete</mat-icon>
       </button>

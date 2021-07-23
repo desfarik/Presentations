@@ -64,6 +64,10 @@
     transition: transform 250ms ease-in-out;
     display: flex;
     justify-content: flex-end;
+
+    .view-button {
+      color: #43a047;
+    }
   }
 
   &:hover .actions {

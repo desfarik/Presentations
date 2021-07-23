@@ -42,7 +42,7 @@ export class TaskPanelComponent implements OnInit {
       .subscribe(async ({title, html}: any) => {
         const id = this.presentationService.generateTaskId(this.presentationId, type);
         const [url, imageUrl] = await this.storageService.saveTaskHtml(this.presentationId, id, type, html)
-        this.updateItems(new Task(id, imageUrl, title, url, type, 1));
+        this.updateItems(new Task(id, imageUrl, title, url, type, Number.MAX_SAFE_INTEGER));
       })
   }
 

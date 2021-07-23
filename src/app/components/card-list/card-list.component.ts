@@ -15,6 +15,8 @@ export class CardListComponent implements OnInit {
   @Input()
   readonly = true
   @Output()
+  viewItem = new EventEmitter<Task>()
+  @Output()
   editItem = new EventEmitter<Task>()
   @Output()
   deleteItem = new EventEmitter<Task>()
@@ -27,7 +29,19 @@ export class CardListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get orderedItems(): CardItem[] {
+    if (this.items) {
+      return this.items.sort((a, b) => a.order - b.order);
+    }
+    return [];
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+    this.changeOrdering(this.items);
+  }
+
+  private changeOrdering(items: CardItem[]) {
+    items.forEach((item, index) => item.order = index);
   }
 }
