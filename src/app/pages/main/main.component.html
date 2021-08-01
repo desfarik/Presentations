@@ -1,7 +1,8 @@
 <div class="presentation-container">
   <app-card-list [items]="presentations"
                  [readonly]="false"
-                 (editItem)="edit($event)">
+                 (editItem)="edit($event)"
+                 (viewItem)="view($event)">
     <ng-container *ngTemplateOutlet="createNew"></ng-container>
   </app-card-list>
 </div>

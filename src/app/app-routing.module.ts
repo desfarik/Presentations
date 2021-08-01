@@ -30,7 +30,10 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: ViewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    resolve: {
+      presentation: PresentationResolver
+    }
   },
   {
     path: 'login',

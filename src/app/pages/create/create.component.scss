@@ -8,6 +8,11 @@
   flex-grow: 1;
   height: 100%;
   min-width: 665px;
+  ::ng-deep {
+    .tox-tinymce {
+      border-top: none;
+    }
+  }
 }
 
 .row-container {

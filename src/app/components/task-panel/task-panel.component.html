@@ -1,19 +1,23 @@
 <div class="panel-container">
   <mat-tab-group>
     <mat-tab label="Урок">
-      <ng-container *ngTemplateOutlet="create; context:{$implicit:types.SCHOOL}"></ng-container>
+      <ng-container *ngIf="!readonly">
+        <ng-container *ngTemplateOutlet="create; context:{$implicit:types.SCHOOL}"></ng-container>
+      </ng-container>
       <app-card-list [items]="lessonTasks"
                      (editItem)="editTask($event)"
                      (deleteItem)="deleteTask($event)"
-                     [readonly]="false">
+                     [readonly]="readonly">
       </app-card-list>
     </mat-tab>
     <mat-tab label="Домашка">
-      <ng-container *ngTemplateOutlet="create; context:{$implicit:types.HOME}"></ng-container>
+      <ng-container *ngIf="!readonly">
+        <ng-container *ngTemplateOutlet="create; context:{$implicit:types.HOME}"></ng-container>
+      </ng-container>
       <app-card-list [items]="homeTasks"
                      (editItem)="editTask($event)"
                      (deleteItem)="deleteTask($event)"
-                     [readonly]="false">
+                     [readonly]="readonly">
       </app-card-list>
     </mat-tab>
   </mat-tab-group>

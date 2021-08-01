@@ -1,0 +1,32 @@
+:host {
+  width: 100%;
+}
+
+.view-page-container {
+  display: flex;
+  height: 100%;
+
+  .presentation-container {
+    background: whitesmoke;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .html-container {
+    background: white;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 37%);
+    max-width: 800px;
+    min-width: 600px;
+    flex-grow: 1;
+    padding: 24px 24px 12px;
+    margin-top: 39px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .task-panel {
+    border-left: 1px solid #ccc;;
+  }
+}

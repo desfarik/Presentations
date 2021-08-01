@@ -19,6 +19,8 @@ export class TaskPanelComponent implements OnInit {
   types = CardItemType;
   @Input()
   presentationId!: string;
+  @Input()
+  readonly = false;
 
   @Input()
   lessonTasks: Task[] = [];

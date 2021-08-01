@@ -1,1 +1,12 @@
-<p>view works!</p>
+<div class="view-page-container">
+  <div class="presentation-container">
+    <div class="html-container"
+         [innerHTML]="html | saveHtml">
+    </div>
+  </div>
+  <app-task-panel class="task-panel"
+                  [readonly]="true"
+                  [lessonTasks]="presentation && presentation.lessonTasks"
+                  [homeTasks]="presentation && presentation.homeTasks"
+                  [presentationId]="presentation && presentation.id"></app-task-panel>
+</div>

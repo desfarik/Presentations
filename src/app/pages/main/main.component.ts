@@ -27,4 +27,8 @@ export class MainComponent implements OnInit {
   edit(presentation: CardItem): void {
     this.router.navigateByUrl(`/edit/${presentation.id}`)
   }
+
+  view(presentation: CardItem): void {
+    this.router.navigateByUrl(`/view/${presentation.id}`)
+  }
 }
