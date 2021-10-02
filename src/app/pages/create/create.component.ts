@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {editorConfig} from "./editor.config";
 import {PresentationService} from "../../core/service/presentation.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,7 +11,8 @@ import {Location} from "@angular/common";
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateComponent implements OnInit, AfterViewInit {
 
@@ -27,6 +28,7 @@ export class CreateComponent implements OnInit, AfterViewInit {
 
   title = 'Название урока';
   presentation!: Presentation;
+  presentationId!: string;
 
   config = {
     ...editorConfig,
@@ -42,7 +44,15 @@ export class CreateComponent implements OnInit, AfterViewInit {
     html {
         background: whitesmoke;
         height: 100%;
-    }`
+    }`,
+    images_upload_handler: async (imageFile: any, successCallback: any, failCallback: any) => {
+      try {
+        const url = await this.storageService.saveContentImage(this.presentationId, imageFile.blob())
+        successCallback(url);
+      } catch (e) {
+        failCallback(e);
+      }
+    },
   }
 
   @ViewChild(EditorComponent)
@@ -56,6 +66,7 @@ export class CreateComponent implements OnInit, AfterViewInit {
     if (this.presentation) {
       this.title = this.presentation.title;
     }
+    this.presentationId = this.presentation?.id || this.presentationService.generateId();
     console.log(this.presentation);
   }
 
@@ -71,7 +82,7 @@ export class CreateComponent implements OnInit, AfterViewInit {
     const html = this.editorComponent.editor.getContent({format: 'html'});
     console.log(this.taskPanelComponent.lessonTasks);
 
-    const presentation = await this.presentationService.save(this.presentation?.id, this.title, html,
+    const presentation = await this.presentationService.save(this.presentationId, this.title, html,
       this.taskPanelComponent.lessonTasks, this.taskPanelComponent.homeTasks)
     if (!this.presentation) {
       this.location.replaceState(`/edit/${presentation.id}`)

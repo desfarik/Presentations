@@ -8,11 +8,6 @@ export const editorConfig = {
   toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
   toolbar_sticky: true,
   resize: false,
-  autosave_ask_before_unload: true,
-  autosave_interval: '30s',
-  autosave_prefix: '{path}{query}-{id}-',
-  autosave_restore_when_empty: false,
-  autosave_retention: '2m',
   image_advtab: true,
   link_list: [
     {title: 'My page 1', value: 'https://www.tiny.cloud'},
@@ -26,6 +21,7 @@ export const editorConfig = {
     {title: 'None', value: ''},
     {title: 'Some class', value: 'class-name'}
   ],
+  file_picker_types: 'image',
   importcss_append: true,
   templates: [
     {

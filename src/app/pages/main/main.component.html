@@ -1,6 +1,6 @@
 <div class="presentation-container">
   <app-card-list [items]="presentations"
-                 [readonly]="false"
+                 [readonly]="!(authenticationService.isAdmin | async)"
                  (editItem)="edit($event)"
                  (viewItem)="view($event)">
     <ng-container *ngTemplateOutlet="createNew"></ng-container>

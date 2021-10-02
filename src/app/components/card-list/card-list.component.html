@@ -16,7 +16,9 @@
 </div>
 
 <ng-template #itemTemplate let-item let-readonly="readonly">
-  <div class="card-item">
+  <div class="card-item"
+       [class.readonly]="readonly"
+       (click)="readonly && viewItem.emit(item)">
     <div *ngIf="!readonly" class="actions">
       <button mat-icon-button class="view-button"
               (click)="viewItem.emit(item)">

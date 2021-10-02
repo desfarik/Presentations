@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { PresentationService } from "../../core/service/presentation.service";
 import { StorageService } from "../../core/service/storage.service";
@@ -7,7 +7,8 @@ import { Presentation } from "../../core/dto/presentation";
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss']
+  styleUrls: ['./view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ViewComponent implements OnInit {
 

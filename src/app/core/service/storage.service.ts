@@ -39,9 +39,16 @@ export class StorageService {
     })
   }
 
+  public async saveContentImage(presentationId: string, imageBlob: Blob): Promise<string> {
+    const imageRef = this.fireStorage.storage.ref(`${presentationId}/images/${presentationId}_${Date.now()}`);
+    return imageRef.put(imageBlob, {contentType: 'image', cacheControl: 'public'}).then(() => {
+      return imageRef.getDownloadURL();
+    })
+  }
+
   private async saveImage(ref: any, html: string): Promise<string> {
     const image = await this.imageService.generateImage(html);
-    return ref.put(image, {contentType: 'image/png',}).then(() => {
+    return ref.put(image, {contentType: 'image/png', cacheControl: 'public'}).then(() => {
       return ref.getDownloadURL();
     })
   }
