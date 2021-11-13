@@ -1,14 +1,12 @@
-name: Lint
+name: GitHub Actions
 
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
   pull_request:
     branches:
-      - main
-
+      - master
+    types: [opened, reopened, synchronize]
 jobs:
-  run-linters:
+  run-linter:
     name: Lint
     runs-on: ubuntu-latest
 
@@ -20,8 +18,8 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-      - run: npm install
-      - run: npm lint
+      - run: npm ci
+      - run: npm run lint
 
   run-build:
     name: Build
@@ -35,5 +33,5 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-      - run: npm install
-      - run: npm build
+      - run: npm ci
+      - run: npm run build
