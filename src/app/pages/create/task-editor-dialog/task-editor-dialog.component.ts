@@ -1,15 +1,15 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {editorConfig} from "../editor.config";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Task} from "../../../core/dto/task";
-import {EditorComponent} from "@tinymce/tinymce-angular";
-import {StorageService} from "../../../core/service/storage.service";
+import { editorConfig } from '../editor.config';
+import { Task } from '../../../core/dto/task';
+import { StorageService } from '../../../core/service/storage.service';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { EditorComponent } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-editor-dialog',
   templateUrl: './task-editor-dialog.component.html',
   styleUrls: ['./task-editor-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskEditorDialogComponent implements OnInit, AfterViewInit {
 
@@ -18,10 +18,10 @@ export class TaskEditorDialogComponent implements OnInit, AfterViewInit {
   private editorComponent!: EditorComponent;
 
   config = {
-    ...editorConfig
-  }
+    ...editorConfig,
+  };
 
-  title = ''
+  title = '';
   private htmlLoadPromise!: Promise<string>;
 
   constructor(@Inject(MAT_DIALOG_DATA) public task: Task,
@@ -37,13 +37,13 @@ export class TaskEditorDialogComponent implements OnInit, AfterViewInit {
   }
 
   get isDisabled(): boolean {
-    return !(this.title)
+    return !(this.title);
   }
 
 
   close() {
-    const html = this.editorComponent.editor.getContent({format: 'html'});
-    this.dialogRef.close({title: this.title.trim(), html})
+    const html = this.editorComponent.editor.getContent({ format: 'html' });
+    this.dialogRef.close({ title: this.title.trim(), html });
   }
 
   async ngAfterViewInit(): Promise<void> {

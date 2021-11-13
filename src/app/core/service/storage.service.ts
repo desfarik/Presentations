@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {AngularFireStorage} from "@angular/fire/storage";
-import {CardItemType} from "../../components/card-list/card-item";
-import {ImageService} from "./image.service";
+import { ImageService } from './image.service';
+import { CardItemType } from '../../components/card-list/card-item';
+import { Injectable } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
 
@@ -20,9 +20,7 @@ export class StorageService {
   }
 
   async loadHtml(htmlUrl: string): Promise<string> {
-    return fetch(htmlUrl).then(response => {
-      return response.text();
-    })
+    return fetch(htmlUrl).then(response => response.text());
   }
 
   saveTaskHtml(presentationId: string, id: string, type: CardItemType, html: string): Promise<[string, string]> {
@@ -33,23 +31,17 @@ export class StorageService {
 
   }
 
-  private saveHtml(ref: any, html: string): Promise<string> {
-    return ref.putString(html).then(() => {
-      return ref.getDownloadURL()
-    })
-  }
-
   public async saveContentImage(presentationId: string, imageBlob: Blob): Promise<string> {
     const imageRef = this.fireStorage.storage.ref(`${presentationId}/images/${presentationId}_${Date.now()}`);
-    return imageRef.put(imageBlob, {contentType: 'image', cacheControl: 'public'}).then(() => {
-      return imageRef.getDownloadURL();
-    })
+    return imageRef.put(imageBlob, { contentType: 'image', cacheControl: 'public' }).then(() => imageRef.getDownloadURL());
+  }
+
+  private saveHtml(ref: any, html: string): Promise<string> {
+    return ref.putString(html).then(() => ref.getDownloadURL());
   }
 
   private async saveImage(ref: any, html: string): Promise<string> {
     const image = await this.imageService.generateImage(html);
-    return ref.put(image, {contentType: 'image/png', cacheControl: 'public'}).then(() => {
-      return ref.getDownloadURL();
-    })
+    return ref.put(image, { contentType: 'image/png', cacheControl: 'public' }).then(() => ref.getDownloadURL());
   }
 }

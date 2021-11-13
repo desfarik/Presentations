@@ -1,12 +1,12 @@
-import {CardItem, CardItemType} from "../../components/card-list/card-item";
+import { CardItem, CardItemType } from '../../components/card-list/card-item';
 
 export class Task implements CardItem {
-  public readonly id: string
+  public readonly id: string;
   public readonly image: string;
   public readonly title: string;
   public readonly htmlUrl: string;
   public readonly type: CardItemType;
-  public order: number
+  public order: number;
 
 
   constructor(id: string, image: string, title: string, htmlUrl: string, type: CardItemType, order: number) {

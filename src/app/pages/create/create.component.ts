@@ -1,12 +1,12 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
-import {editorConfig} from "./editor.config";
-import {PresentationService} from "../../core/service/presentation.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Presentation} from "../../core/dto/presentation";
-import {EditorComponent} from "@tinymce/tinymce-angular";
-import {TaskPanelComponent} from "../../components/task-panel/task-panel.component";
-import {StorageService} from "../../core/service/storage.service";
-import {Location} from "@angular/common";
+import { editorConfig } from './editor.config';
+import { PresentationService } from '../../core/service/presentation.service';
+import { Presentation } from '../../core/dto/presentation';
+import { TaskPanelComponent } from '../../components/task-panel/task-panel.component';
+import { StorageService } from '../../core/service/storage.service';
+import { EditorComponent } from '@tinymce/tinymce-angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create',
@@ -47,13 +47,13 @@ export class CreateComponent implements OnInit, AfterViewInit {
     }`,
     images_upload_handler: async (imageFile: any, successCallback: any, failCallback: any) => {
       try {
-        const url = await this.storageService.saveContentImage(this.presentationId, imageFile.blob())
+        const url = await this.storageService.saveContentImage(this.presentationId, imageFile.blob());
         successCallback(url);
       } catch (e) {
         failCallback(e);
       }
     },
-  }
+  };
 
   @ViewChild(EditorComponent)
   private editorComponent!: EditorComponent;
@@ -72,20 +72,20 @@ export class CreateComponent implements OnInit, AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     if (this.presentation) {
-      const html = await this.storageService.loadHtml(this.presentation.htmlUrl)
+      const html = await this.storageService.loadHtml(this.presentation.htmlUrl);
       this.editorComponent.editor.setContent(html);
       console.log(html);
     }
   }
 
   async save() {
-    const html = this.editorComponent.editor.getContent({format: 'html'});
+    const html = this.editorComponent.editor.getContent({ format: 'html' });
     console.log(this.taskPanelComponent.lessonTasks);
 
     const presentation = await this.presentationService.save(this.presentationId, this.title, html,
-      this.taskPanelComponent.lessonTasks, this.taskPanelComponent.homeTasks)
+                                                             this.taskPanelComponent.lessonTasks, this.taskPanelComponent.homeTasks);
     if (!this.presentation) {
-      this.location.replaceState(`/edit/${presentation.id}`)
+      this.location.replaceState(`/edit/${presentation.id}`);
     }
     this.presentation = presentation;
     console.log(this.presentation);
