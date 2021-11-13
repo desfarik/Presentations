@@ -1,6 +1,6 @@
+import { TaskPanelComponent } from './task-panel.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskPanelComponent } from './task-panel.component';
 
 describe('TaskPanelComponent', () => {
   let component: TaskPanelComponent;
@@ -8,9 +8,9 @@ describe('TaskPanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskPanelComponent ]
+      declarations: [ TaskPanelComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
