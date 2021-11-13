@@ -31,13 +31,13 @@ export class StorageService {
 
   }
 
-  private saveHtml(ref: any, html: string): Promise<string> {
-    return ref.putString(html).then(() => ref.getDownloadURL());
-  }
-
   public async saveContentImage(presentationId: string, imageBlob: Blob): Promise<string> {
     const imageRef = this.fireStorage.storage.ref(`${presentationId}/images/${presentationId}_${Date.now()}`);
     return imageRef.put(imageBlob, { contentType: 'image', cacheControl: 'public' }).then(() => imageRef.getDownloadURL());
+  }
+
+  private saveHtml(ref: any, html: string): Promise<string> {
+    return ref.putString(html).then(() => ref.getDownloadURL());
   }
 
   private async saveImage(ref: any, html: string): Promise<string> {
