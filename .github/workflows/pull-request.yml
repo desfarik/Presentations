@@ -34,6 +34,6 @@ jobs:
 
       - run: npm ci
       - name: Create config file
-        run: echo 'export const firebaseConfig = {}' > firebase.config.ts
+        run: echo 'export const firebaseConfig = { ${{secrets.APIKEY}} }' > firebase.config.ts
       - run: npm run build
 
