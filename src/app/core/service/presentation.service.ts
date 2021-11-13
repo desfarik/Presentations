@@ -1,7 +1,7 @@
 import { StorageService } from './storage.service';
 import { Presentation } from '../dto/presentation';
 import { Task } from '../dto/task';
-import { CardItemType } from '../../components/card-list/card-item-type';
+import { CardItemType } from '../../components/card-list/card-item';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { DataSnapshot } from '@angular/fire/database/interfaces';

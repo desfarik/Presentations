@@ -2,7 +2,6 @@ import { Presentation } from '../../core/dto/presentation';
 import { PresentationService } from '../../core/service/presentation.service';
 import { CardItem } from '../../components/card-list/card-item';
 import { AuthenticationService } from '../../core/service/authentication.service';
-import { CardItemType } from '../../components/card-list/card-item-type';
 import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 

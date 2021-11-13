@@ -1,5 +1,5 @@
 import { ImageService } from './image.service';
-import { CardItemType } from '../../components/card-list/card-item-type';
+import { CardItemType } from '../../components/card-list/card-item';
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 

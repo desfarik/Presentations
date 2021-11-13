@@ -1,6 +1,5 @@
 import { Task } from './task';
-import { CardItem } from '../../components/card-list/card-item';
-import { CardItemType } from '../../components/card-list/card-item-type';
+import { CardItem, CardItemType } from '../../components/card-list/card-item';
 
 export class Presentation implements CardItem {
   public readonly id: string;
