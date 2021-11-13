@@ -4,14 +4,12 @@ import {Presentation} from "../dto/presentation";
 import {DataSnapshot} from "@angular/fire/database/interfaces";
 import {Task} from "../dto/task";
 import {StorageService} from "./storage.service";
-import {PresentationResolver} from "../resolver/presentation.resolver";
 import {CardItemType} from "../../components/card-list/card-item";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PresentationService {
-  private cached: { [key: string]: Presentation } = {}
 
   constructor(private fireDatabase: AngularFireDatabase, private storageService: StorageService) {
   }
@@ -20,24 +18,17 @@ export class PresentationService {
     return this.fireDatabase.database.ref('/presentations').get()
       .then((snapshot: DataSnapshot) => {
         if (snapshot.exists()) {
-          this.cached = snapshot.val() as any;
-          return Object.values(this.cached);
+          return Object.values(snapshot.val());
         }
         return []
       })
   }
 
   getById(id: string): Promise<Presentation> {
-    const cachedPresentation = this.cached[id];
-    if (cachedPresentation) {
-      return Promise.resolve(cachedPresentation);
-    }
     return this.fireDatabase.database.ref(`/presentations/${id}`).get()
       .then((snapshot: DataSnapshot) => {
         if (snapshot.exists()) {
-          const presentation = snapshot.val() as Presentation;
-          this.cached[id] = snapshot.val();
-          return presentation;
+          return snapshot.val() as Presentation;
         }
         throw new Error('Not found')
       })

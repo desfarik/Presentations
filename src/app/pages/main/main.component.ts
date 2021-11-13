@@ -3,6 +3,7 @@ import {Presentation} from "../../core/dto/presentation";
 import {PresentationService} from "../../core/service/presentation.service";
 import {CardItem, CardItemType} from "../../components/card-list/card-item";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../core/service/authentication.service";
 
 @Component({
   selector: 'app-main',
@@ -16,6 +17,7 @@ export class MainComponent implements OnInit {
 
   constructor(private presentationService: PresentationService,
               private router: Router,
+              public authenticationService: AuthenticationService,
               private changeDetector: ChangeDetectorRef) {
   }
 

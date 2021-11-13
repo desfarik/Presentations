@@ -13,7 +13,7 @@ export class CardListComponent implements OnInit {
   @Input()
   items: CardItem[] = [];
   @Input()
-  readonly = true
+  readonly: boolean = true
   @Output()
   viewItem = new EventEmitter<Task>()
   @Output()
