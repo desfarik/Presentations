@@ -33,5 +33,6 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-      - run: echo "export const firebaseConfig = { apiKey: '$APIKEY'" > h.ts | cat h.ts
+      - name: Create congif file
+        run: echo 'export const firebaseConfig = { apiKey' > h.ts | cat h.ts
 
