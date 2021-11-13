@@ -32,6 +32,8 @@ jobs:
         with:
           node-version: '16'
 
+      - run: npm ci
       - name: Create congif file
-        run: echo 'export const firebaseConfig = { apiKey ${{secrets.APIKEY}}' > h.ts | cat h.ts
+        run: echo ${{secrets.CONFIG}} > firebase.config.ts | cat firebase.config.ts
+      - run: npm run build
 
