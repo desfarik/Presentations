@@ -31,6 +31,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+
       - name: Create congif file
-        run: echo 'export const firebaseConfig = { apiKey $APIKEY' > h.ts | cat h.ts
+        run: echo 'export const firebaseConfig = { apiKey ${{secrets.APIKEY}}' > h.ts | cat h.ts
 
