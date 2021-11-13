@@ -1,4 +1,4 @@
-name: GitHub Actions
+name: Code analyzing on pull request
 
 on:
   pull_request:
