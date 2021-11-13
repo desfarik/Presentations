@@ -1,8 +1,9 @@
-import {CardItem, CardItemType} from "../../components/card-list/card-item";
-import {Task} from "./task";
+import { Task } from './task';
+import { CardItem } from '../../components/card-list/card-item';
+import { CardItemType } from '../../components/card-list/card-item-type';
 
 export class Presentation implements CardItem {
-  public readonly id: string
+  public readonly id: string;
   public readonly image: string;
   public readonly title: string;
   public readonly htmlUrl: string;
@@ -18,7 +19,7 @@ export class Presentation implements CardItem {
     this.title = title;
     this.htmlUrl = htmlUrl;
     this.lessonTasks = lessonTasks;
-    this.homeTasks = homeTasks
+    this.homeTasks = homeTasks;
     this.order = order;
   }
 

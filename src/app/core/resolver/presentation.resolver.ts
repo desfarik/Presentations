@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {Presentation} from "../dto/presentation";
-import {PresentationService} from "../service/presentation.service";
+import { Presentation } from '../dto/presentation';
+import { PresentationService } from '../service/presentation.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PresentationResolver implements Resolve<Presentation | null> {
 

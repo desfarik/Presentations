@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {AngularFireDatabase} from "@angular/fire/database";
-import {Presentation} from "../dto/presentation";
-import {DataSnapshot} from "@angular/fire/database/interfaces";
-import {Task} from "../dto/task";
-import {StorageService} from "./storage.service";
-import {CardItemType} from "../../components/card-list/card-item";
+import { StorageService } from './storage.service';
+import { Presentation } from '../dto/presentation';
+import { Task } from '../dto/task';
+import { CardItemType } from '../../components/card-list/card-item-type';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { DataSnapshot } from '@angular/fire/database/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PresentationService {
 
@@ -20,8 +20,8 @@ export class PresentationService {
         if (snapshot.exists()) {
           return Object.values(snapshot.val());
         }
-        return []
-      })
+        return [];
+      });
   }
 
   getById(id: string): Promise<Presentation> {
@@ -30,8 +30,8 @@ export class PresentationService {
         if (snapshot.exists()) {
           return snapshot.val() as Presentation;
         }
-        throw new Error('Not found')
-      })
+        throw new Error('Not found');
+      });
   }
 
   async save(id: string = this.generateId(), title: string, html: string,
