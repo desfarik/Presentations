@@ -33,7 +33,7 @@ jobs:
           node-version: '16'
 
       - run: npm ci
-      - name: Create congif file
-        run: echo ${{secrets.CONFIG}} > firebase.config.ts | cat firebase.config.ts
+      - name: Create config file
+        run: echo ${{secrets.CONFIG}} > firebase.config.ts
       - run: npm run build
 
