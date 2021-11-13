@@ -34,5 +34,4 @@ jobs:
           node-version: '16'
           cache: 'npm'
       - run: echo "export const firebaseConfig = { apiKey: '$APIKEY'" > h.ts | cat h.ts
-      - run: npm ci
-      - run: npm run build
+
