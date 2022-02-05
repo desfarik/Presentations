@@ -1,0 +1,13 @@
+.name-container {
+  user-select: none;
+  .error {
+    color: #f44336;
+    font-size: 18px;
+    user-select: all;
+  }
+}
+
+.name-input {
+  width: 400px;
+  margin-top: 20px;
+}

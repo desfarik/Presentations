@@ -1,0 +1,23 @@
+<div class="lesson-material-header">
+  <h2 class="lesson-name">{{lessonName | async}}</h2>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon class="more-icon">more_vert</mat-icon>
+  </button>
+</div>
+<mat-progress-bar *ngIf="isLoading" [mode]="'indeterminate'" class="progress-bar"></mat-progress-bar>
+<div class="material-container">
+  <div *ngFor="let material of materials">
+    {{material.name}}
+  </div>
+</div>
+
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item>
+    <span>Переименовать</span>
+  </button>
+  <button mat-menu-item
+          (click)="deleteLesson()">
+    <span>Удалить</span>
+  </button>
+</mat-menu>

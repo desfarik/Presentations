@@ -1,8 +1,8 @@
-import { MainComponent } from './pages/main/main.component';
-import { CreateComponent } from './pages/create/create.component';
-import { ViewComponent } from './pages/view/view.component';
+import { MainComponent } from './modules/main/main.component';
+import { CreateComponent } from './modules/create/create.component';
+import { ViewComponent } from './modules/view/view.component';
 import { AuthGuard } from './core/guard/auth.guard';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './modules/login/login.component';
 import { LoginGuard } from './core/guard/login.guard';
 import { PresentationResolver } from './core/resolver/presentation.resolver';
 import { AdminGuard } from './core/guard/admin.guard';
@@ -40,6 +40,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     canActivate: [LoginGuard],
+  },
+  {
+    path: 'course',
+    loadChildren: () => import('./modules/course/course.module').then(m => m.CourseModule),
   },
   {
     path: '**',

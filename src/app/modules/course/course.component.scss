@@ -1,0 +1,8 @@
+.course-page {
+  display: grid;
+  grid-template-columns: 1fr 0 2fr 1fr;
+  min-height: 100%;
+}
+:host {
+  width: 100%;
+}

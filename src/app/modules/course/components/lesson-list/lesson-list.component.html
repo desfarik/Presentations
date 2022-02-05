@@ -1,0 +1,31 @@
+<button mat-button class="create-new-lesson-button">
+  <mat-icon>add</mat-icon>
+  Создать
+</button>
+<div class="lessons-container readonly" *ngIf="false">
+  <ng-container *ngFor="let lesson of courseLessons; trackBy: identifyLesson">
+    <ng-container *ngTemplateOutlet="lessonItem; context:{$implicit:lesson}"></ng-container>
+  </ng-container>
+</div>
+
+<div cdkDropList class="lessons-container draggable"
+     (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let lesson of courseLessons; trackBy: identifyLesson"
+       cdkDrag
+       class="drag-lesson-wrapper">
+    <ng-container *ngTemplateOutlet="lessonItem; context:{$implicit:lesson}"></ng-container>
+    <button mat-icon-button class="drag-handle">
+      <mat-icon cdkDragHandle>drag_handle</mat-icon>
+    </button>
+  </div>
+</div>
+
+
+<ng-template #lessonItem let-lesson>
+  <div [routerLink]="'./'+lesson.guid"
+       (click)="selectLesson(lesson)"
+       [class.selected]="isSelectedLesson(lesson)"
+       class="lesson">
+    {{lesson.name}}
+  </div>
+</ng-template>

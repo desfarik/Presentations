@@ -1,4 +1,4 @@
-import { TaskEditorDialogComponent } from '../../pages/create/task-editor-dialog/task-editor-dialog.component';
+import { TaskEditorDialogComponent } from '../../modules/create/task-editor-dialog/task-editor-dialog.component';
 import { Task } from '../../core/dto/task';
 import { StorageService } from '../../core/service/storage.service';
 import { PresentationService } from '../../core/service/presentation.service';
