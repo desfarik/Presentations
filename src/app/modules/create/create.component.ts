@@ -5,7 +5,7 @@ import { TaskPanelComponent } from '../../components/task-panel/task-panel.compo
 import { StorageService } from '../../core/service/storage.service';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -34,7 +34,6 @@ export class CreateComponent implements OnInit, AfterViewInit {
     ...editorConfig,
     content_style: `
     body {
-        max-width: 663px;
         background: white;
         margin: 12px auto 0;
         padding: 1px 16px;
@@ -83,7 +82,7 @@ export class CreateComponent implements OnInit, AfterViewInit {
     console.log(this.taskPanelComponent.lessonTasks);
 
     const presentation = await this.presentationService.save(this.presentationId, this.title, html,
-                                                             this.taskPanelComponent.lessonTasks, this.taskPanelComponent.homeTasks);
+      this.taskPanelComponent.lessonTasks, this.taskPanelComponent.homeTasks);
     if (!this.presentation) {
       this.location.replaceState(`/edit/${presentation.id}`);
     }

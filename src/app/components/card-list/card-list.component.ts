@@ -31,7 +31,7 @@ export class CardListComponent implements OnInit {
 
   get orderedItems(): CardItem[] {
     if (this.items) {
-      return [...this.items.sort((a, b) => a.order - b.order), ...this.items, ...this.items, ...this.items];
+      return this.items.sort((a, b) => a.order - b.order);
     }
     return [];
   }
