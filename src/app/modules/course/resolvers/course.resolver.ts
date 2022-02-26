@@ -17,7 +17,8 @@ export class CourseResolver implements Resolve<unknown> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<unknown> {
     const lessonId = last(state.url.split('/')) || '';
-    return fromPromise(this.courseApiService.getByGuid(route.paramMap.get('id') || ''))
+    console.log(lessonId);
+    return this.courseApiService.getByGuid(route.paramMap.get('id') || '')
       .pipe(
         switchMap((course: Course) => this.store.dispatch(new SetCourse(course, lessonId))),
       );

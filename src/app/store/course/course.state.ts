@@ -117,18 +117,18 @@ export class CourseState {
       .subscribe();
   }
 
-  @Action(DeleteSelectedLesson)
-  deleteSelectedLesson(
-    { patchState, getState }: StateContext<CourseStateModel>,
-  ): Observable<unknown> {
-    const { guid, selectedLesson } = getState();
-    if (!selectedLesson) {
-      return EMPTY;
-    }
-    patchState({ loading: true });
-    return fromPromise(this.courseApiService.deleteLesson(guid, selectedLesson.guid))
-      .pipe(finalize(() => patchState({ loading: false })));
-  }
+  // @Action(DeleteSelectedLesson)
+  // deleteSelectedLesson(
+  //   { patchState, getState }: StateContext<CourseStateModel>,
+  // ): Observable<unknown> {
+  //   const { guid, selectedLesson } = getState();
+  //   if (!selectedLesson) {
+  //     return EMPTY;
+  //   }
+  //   patchState({ loading: true });
+  //   return fromPromise(this.courseApiService.deleteLesson(guid, selectedLesson.guid))
+  //     .pipe(finalize(() => patchState({ loading: false })));
+  // }
 
   @Action(CreateNewLesson)
   createNewLesson(
@@ -141,7 +141,7 @@ export class CourseState {
       .pipe(
         tap(([lesson, courseLesson]) =>
           patchState({
-            lessonOrder: `${lessonOrder}|${lesson.guid}`,
+            lessonOrder: lessonOrder ? `${lessonOrder}|${lesson.guid}` : `${lesson.guid}`,
             selectedLesson: courseLesson,
             lessons: [...lessons, courseLesson],
           })))
