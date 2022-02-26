@@ -79,10 +79,8 @@ export class CreateComponent implements OnInit, AfterViewInit {
 
   async save() {
     const html = this.editorComponent.editor.getContent({ format: 'html' });
-    console.log(this.taskPanelComponent.lessonTasks);
 
-    const presentation = await this.presentationService.save(this.presentationId, this.title, html,
-      this.taskPanelComponent.lessonTasks, this.taskPanelComponent.homeTasks);
+    const presentation = await this.presentationService.save(this.presentationId, this.title, html);
     if (!this.presentation) {
       this.location.replaceState(`/edit/${presentation.id}`);
     }
